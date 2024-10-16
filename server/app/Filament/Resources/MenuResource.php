@@ -36,6 +36,7 @@ final class MenuResource extends Resource
             ->columns(1)
             ->schema([
                 Select::make('day_of_week')
+                    ->label(__('menu.day_of_week'))
                     ->options([
                         'monday' => 'Mandag',
                         'tuesday' => 'Tirsdag',
@@ -46,25 +47,28 @@ final class MenuResource extends Resource
                     ->required(),
 
                 TextInput::make('name')
+                    ->label(__('menu.name'))
                     ->maxLength(255)
                     ->minLength(3)
                     ->required(),
 
                 RichEditor::make('description')
+                    ->label(__('menu.description'))
                     ->toolbarButtons(['bold', 'italic', 'underline', 'strikethrough', 'link'])
-                    ->placeholder('Beskrivelse av menyen')
+                    ->placeholder(__('menu.description_placeholder'))
                     ->maxLength(555)
                     ->nullable(),
 
                 Toggle::make('is_published')
+                    ->label(__('menu.is_published'))
                     ->default(false),
 
                 Placeholder::make('created_at')
-                    ->label('Created Date')
+                    ->label(__('Created Date'))
                     ->content(fn(?Menu $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
+                    ->label(__('Updated At'))
                     ->content(fn(?Menu $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
@@ -73,16 +77,19 @@ final class MenuResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('day_of_week'),
+                TextColumn::make('day_of_week')
+                    ->label(__('menu.day_of_week')),
 
                 TextColumn::make('name')
+                    ->label(__('menu.name'))
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('description'),
+                TextColumn::make('description')
+                    ->label(__('menu.description')),
 
-                BooleanColumn::make('is_published')
-                    ->label('Published')
+                BooleanColumn::make('is_published') // Sad this is depcriated :(
+                    ->label(__('menu.is_published'))
                     ->sortable(),
             ])
             ->filters([
