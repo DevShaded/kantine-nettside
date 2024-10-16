@@ -18,6 +18,11 @@ final class Menu extends Model
         'is_published',
     ];
 
+    public function dishes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Dish::class, 'menu_id');
+    }
+
     protected function casts(): array
     {
         return [
