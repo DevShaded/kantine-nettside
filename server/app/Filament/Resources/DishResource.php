@@ -37,23 +37,28 @@ final class DishResource extends Resource
             ->schema([
                 Select::make('menu_id')
                     ->relationship('menu', 'name')
+                    ->label(__('dishes.menu'))
                     ->preload()
                     ->searchable()
                     ->required(),
 
                 TextInput::make('name')
+                    ->label(__('dishes.name'))
                     ->maxLength(255)
                     ->required(),
 
                 TextInput::make('description')
+                    ->label(__('dishes.description'))
                     ->maxLength(1000)
                     ->required(),
 
                 TextInput::make('price')
+                    ->label(__('dishes.price'))
                     ->required()
                     ->numeric(),
 
                 FileUpload::make('image_url')
+                    ->label(__('dishes.image'))
                     ->image()
                     ->imageEditor()
                     ->imageEditorAspectRatios([
@@ -64,11 +69,11 @@ final class DishResource extends Resource
                     ->nullable(),
 
                 Placeholder::make('created_at')
-                    ->label('Created Date')
+                    ->label(__('Created Date'))
                     ->content(fn(?Dish $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
+                    ->label(__('Last Modified Date'))
                     ->content(fn(?Dish $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
@@ -78,18 +83,25 @@ final class DishResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('menu.name')
+                    ->label(__('dishes.menu'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
+                    ->label(__('dishes.name'))
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('description'),
+                TextColumn::make('description')
+                    ->label(__('dishes.description')),
 
-                TextColumn::make('price'),
+                TextColumn::make('price')
+                    ->label(__('dishes.price'))
+                    ->searchable()
+                    ->sortable(),
 
-                ImageColumn::make('image_url'),
+                ImageColumn::make('image_url')
+                    ->label(__('dishes.image')),
             ])
             ->filters([
 
