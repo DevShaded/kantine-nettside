@@ -19,8 +19,7 @@ final class MenuResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'is_published' => $this->is_published,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'dishes' => DishesResource::collection($this->whenLoaded('dishes')),
         ];
     }
 }
