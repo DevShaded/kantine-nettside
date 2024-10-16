@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\MenuResource\RelationManagers;
 
 use App\Models\Dish;
@@ -14,7 +16,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class DishesRelationManager extends RelationManager
+final class DishesRelationManager extends RelationManager
 {
     protected static string $relationship = 'dishes';
 
@@ -87,7 +89,7 @@ class DishesRelationManager extends RelationManager
                     ->label(__('dishes.image')),
             ])
             ->filters([
-                //
+
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
