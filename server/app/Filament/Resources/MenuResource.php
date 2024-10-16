@@ -17,6 +17,7 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -80,7 +81,9 @@ final class MenuResource extends Resource
 
                 TextColumn::make('description'),
 
-                TextColumn::make('is_published'),
+                BooleanColumn::make('is_published')
+                    ->label('Published')
+                    ->sortable(),
             ])
             ->filters([
 
