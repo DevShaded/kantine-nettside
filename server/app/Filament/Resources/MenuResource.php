@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MenuResource\Pages;
+use App\Filament\Resources\MenuResource\RelationManagers\DishesRelationManager;
 use App\Models\Menu;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
@@ -118,5 +119,12 @@ final class MenuResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name'];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            DishesRelationManager::class,
+        ];
     }
 }
