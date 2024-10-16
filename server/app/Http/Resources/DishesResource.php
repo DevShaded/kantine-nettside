@@ -17,6 +17,7 @@ final class DishesResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
             'description' => $this->description,
             'price' => $this->price,
             'image_url' => $this->image_url ? Storage::url($this->image_url) : null,
