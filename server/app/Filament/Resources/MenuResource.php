@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MenuResource\Pages;
 use App\Models\Menu;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -19,7 +20,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class MenuResource extends Resource
+final class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
@@ -82,7 +83,7 @@ class MenuResource extends Resource
                 TextColumn::make('is_published'),
             ])
             ->filters([
-                //
+
             ])
             ->actions([
                 EditAction::make(),
