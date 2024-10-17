@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class Dish extends Model
 {
-    use HasUlids, HasFactory;
+    use HasFactory;
+    use HasUlids;
     protected $fillable = [
         'menu_id',
         'name',

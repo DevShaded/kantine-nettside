@@ -13,9 +13,7 @@ final class DishController extends Controller
 {
     public function index()
     {
-        $dishes = Cache::remember('dishes_index', 3600, function () {
-            return Dish::all();
-        });
+        $dishes = Cache::remember('dishes_index', 3600, fn() => Dish::all());
 
         if ($dishes->isEmpty()) {
             return response()->json([
@@ -34,9 +32,7 @@ final class DishController extends Controller
     {
         $cacheKey = 'dish_' . $dish->id;
 
-        $cachedDish = Cache::remember($cacheKey, 3600, function () use ($dish) {
-            return $dish;
-        });
+        $cachedDish = Cache::remember($cacheKey, 3600, fn() => $dish);
 
         return response()->json([
             'code' => 200,
