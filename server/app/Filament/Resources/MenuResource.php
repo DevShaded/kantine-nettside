@@ -39,11 +39,11 @@ final class MenuResource extends Resource
                 Select::make('day_of_week')
                     ->label(__('menu.day_of_week'))
                     ->options([
-                        'monday' => 'Mandag',
-                        'tuesday' => 'Tirsdag',
-                        'wednesday' => 'Onsdag',
-                        'thursday' => 'Torsdag',
-                        'friday' => 'Fredag',
+                        'mandag' => 'Mandag',
+                        'tirsdag' => 'Tirsdag',
+                        'onsdag' => 'Onsdag',
+                        'torsdag' => 'Torsdag',
+                        'fredag' => 'Fredag',
                     ])
                     ->required(),
 
@@ -87,6 +87,7 @@ final class MenuResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('description')
+                    ->limit()
                     ->label(__('menu.description')),
 
                 BooleanColumn::make('is_published') // Sad this is depcriated :(
