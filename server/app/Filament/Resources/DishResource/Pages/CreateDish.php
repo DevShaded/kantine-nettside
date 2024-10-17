@@ -6,6 +6,7 @@ namespace App\Filament\Resources\DishResource\Pages;
 
 use App\Filament\Resources\DishResource;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Cache;
 
 final class CreateDish extends CreateRecord
 {
@@ -16,5 +17,10 @@ final class CreateDish extends CreateRecord
         return [
 
         ];
+    }
+
+    protected function afterCreate(): void
+    {
+        Cache::forget('dishes_index');
     }
 }
