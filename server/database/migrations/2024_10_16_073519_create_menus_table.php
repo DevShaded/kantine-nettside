@@ -10,7 +10,7 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create('menus', function (Blueprint $table): void {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->string('day_of_week');
             $table->string('name')->nullable();
             $table->text('description')->nullable();

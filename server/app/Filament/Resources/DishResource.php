@@ -6,11 +6,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DishResource\Pages;
 use App\Models\Dish;
+use Closure;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -21,6 +24,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 final class DishResource extends Resource
 {
@@ -43,9 +47,23 @@ final class DishResource extends Resource
                     ->required(),
 
                 TextInput::make('name')
+                    ->reactive()
                     ->label(__('dishes.name'))
                     ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, $state): void {
+                        $set('slug', Str::slug($state));
+                    })
                     ->required(),
+                TextInput::make('slug')
+                    ->afterStateUpdated(function (Closure $set): void {
+                        $set('is_slug_changed_manually', true);
+                    })
+                    ->required(),
+
+                Hidden::make('is_slug_changed_manually')
+                    ->default(false)
+                    ->dehydrated(false),
 
                 TextInput::make('description')
                     ->label(__('dishes.description'))

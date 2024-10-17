@@ -10,9 +10,10 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create('dishes', function (Blueprint $table): void {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->foreignId('menu_id');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->decimal('price');
             $table->string('image_url')->nullable();
