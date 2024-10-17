@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Dish;
+use App\Models\Menu;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +16,17 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $days = ['mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag'];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($days as $day) {
+            $menus = Menu::factory()->create([
+                'day_of_week' => $day,
+            ]);
+
+            Dish::factory(15)->create([
+                'menu_id' => $menus->id,
+                'image_url' => null,
+            ]);
+        }
     }
 }

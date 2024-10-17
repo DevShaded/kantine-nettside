@@ -14,8 +14,12 @@ final class MenuFactory extends Factory
 
     public function definition(): array
     {
+        // Define specific days of the week
+        $daysOfWeek = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag'];
+
         return [
-            'day_of_week' => $this->faker->dayOfWeek(),
+            // Get a random day from the specific array
+            'day_of_week' => $this->faker->randomElement($daysOfWeek),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'is_published' => $this->faker->boolean(),
