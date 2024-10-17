@@ -13,7 +13,9 @@ final class DishController extends Controller
 {
     public function index()
     {
-        $dishes = Dish::all();
+        $dishes = Cache::remember('dishes_index', 3600, function () {
+            return Dish::all();
+        });
 
         if ($dishes->isEmpty()) {
             return response()->json([
