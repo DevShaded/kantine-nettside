@@ -41,6 +41,10 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
 
+    - name: Run migrations in server directory
+      working-directory: ./server
+      run: php artisan migrate --force  # Use --force to run migrations in non-production environments
+
     - name: Run tests in server directory
       working-directory: ./server
       env:
