@@ -33,10 +33,10 @@ const route = useRoute();
 
       <HeadlessDisclosurePanel v-slot="{ close }" class="sm:hidden">
         <div class="space-y-1 pb-3 pt-2">
-          <ResponsiveNavLink @click="close" to="/" :active="route.path === '/'">Hjem</ResponsiveNavLink>
-          <ResponsiveNavLink @click="close" to="/meny" :active="route.path === '/meny'">Meny</ResponsiveNavLink>
-          <ResponsiveNavLink @click="close" to="/utvalg" :active="route.path === '/utvalg'">Utvalg</ResponsiveNavLink>
-          <ResponsiveNavLink @click="close" to="/kontakt" :active="route.path === '/kontakt'">Kontakt Oss</ResponsiveNavLink>
+          <ResponsiveNavLink to="/" :active="route.path === '/'" @click="close">Hjem</ResponsiveNavLink>
+          <ResponsiveNavLink to="/meny" :active="route.path === '/meny'" @click="close">Meny</ResponsiveNavLink>
+          <ResponsiveNavLink to="/utvalg" :active="route.path === '/utvalg'" @click="close">Utvalg</ResponsiveNavLink>
+          <ResponsiveNavLink to="/kontakt" :active="route.path === '/kontakt'" @click="close">Kontakt Oss</ResponsiveNavLink>
         </div>
       </HeadlessDisclosurePanel>
     </HeadlessDisclosure>
