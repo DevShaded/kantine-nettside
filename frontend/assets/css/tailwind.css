@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add poppins to font family body */
+body {
+  font-family: 'Inter', sans-serif;
+}
