@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     'nuxt-seo-experiments',
     '@nuxt/icon',
     '@nuxtjs/color-mode',
-    '@nuxt/content'
+    '@nuxt/content',
+    'nuxt-headlessui',
+    '@nuxt/image'
   ]
 })
