@@ -3,6 +3,6 @@
 
 <template>
   <div>
-    <h1>Kantine nettside</h1>
+    <HeroComponent />
   </div>
 </template>
