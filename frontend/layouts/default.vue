@@ -1,9 +1,9 @@
 <script setup lang="js">
 </script>
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen bg-white-50 dark:bg-zinc-900">
     <HeaderComponent />
-    <main class="bg-gray-50">
+    <main>
       <slot />
     </main>
     <FooterComponent />

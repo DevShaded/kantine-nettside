@@ -6,8 +6,8 @@ const props = defineProps<{
 
 const classes = computed(() =>
   props.active
-    ? 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900'
-    : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500'
+    ? 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-zinc-900 dark:text-zinc-100'
+    : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-zinc-500'
 );
 </script>
 
