@@ -4,5 +4,7 @@
 <template>
   <div>
     <HeroComponent />
+
+    <DailyMenuSection />
   </div>
 </template>
