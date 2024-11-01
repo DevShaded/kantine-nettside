@@ -1,4 +1,14 @@
 <script setup lang="ts">
+useHead({
+  title: 'Dagens Meny - Kantine',
+  meta: [
+    {
+      name: 'description',
+      content: 'Se dagens meny og bestill mat fra kantinen.'
+    }
+  ]
+});
+
 const daysOfWeek = ["søndag","mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
 const today = new Date();
 const dayName = daysOfWeek[today.getDay()];
