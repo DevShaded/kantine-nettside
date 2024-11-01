@@ -7,6 +7,7 @@ export interface Menu {
   code: number;
   data: Data;
 }
+
 export interface Data {
   id: string;
   day_of_week: string;
@@ -49,10 +50,10 @@ const { status, data: menu } = await useFetch(`http://server.test/api/menus/${da
               <NuxtImg :src="'http://server.test' + dish.image_url" :alt="dish.name" class="h-full w-full object-cover object-center" />
             </div>
             <h3 class="mt-4 text-sm text-zinc-700 dark:text-zinc-300">
-              <a href="#">
+              <NuxtLink to="/meny">
                 <span class="absolute inset-0"></span>
                 {{ dish.name }}
-              </a>
+              </NuxtLink>
             </h3>
             <p class="mt-1 text-sm font-medium text-zinc-900 dark:text-zinc-400">{{ dish.price }},-</p>
           </article>
