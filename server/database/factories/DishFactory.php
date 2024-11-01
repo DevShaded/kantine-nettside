@@ -8,6 +8,7 @@ use App\Models\Dish;
 use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 final class DishFactory extends Factory
@@ -23,7 +24,7 @@ final class DishFactory extends Factory
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 1, 100),
-            'image_url' => $this->faker->imageUrl(),
+            'image_url' => $this->faker->image('public/storage', 640, 480, 'food'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
 

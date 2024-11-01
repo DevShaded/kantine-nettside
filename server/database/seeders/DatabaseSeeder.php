@@ -23,9 +23,8 @@ final class DatabaseSeeder extends Seeder
                 'day_of_week' => $day,
             ]);
 
-            Dish::factory(15)->create([
+            Dish::factory(4)->create([
                 'menu_id' => $menus->id,
-                'image_url' => null,
             ]);
         }
     }
