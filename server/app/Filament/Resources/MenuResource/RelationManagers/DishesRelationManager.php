@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace App\Filament\Resources\MenuResource\RelationManagers;
 
 use App\Models\Dish;
+use Closure;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 final class DishesRelationManager extends RelationManager
 {
@@ -23,6 +27,7 @@ final class DishesRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
+            ->columns(2)
             ->schema([
                 Select::make('menu_id')
                     ->relationship('menu', 'name')
@@ -32,9 +37,23 @@ final class DishesRelationManager extends RelationManager
                     ->required(),
 
                 TextInput::make('name')
+                    ->reactive()
                     ->label(__('dishes.name'))
                     ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, $state): void {
+                        $set('slug', Str::slug($state));
+                    })
                     ->required(),
+                TextInput::make('slug')
+                    ->afterStateUpdated(function (Closure $set): void {
+                        $set('is_slug_changed_manually', true);
+                    })
+                    ->required(),
+
+                Hidden::make('is_slug_changed_manually')
+                    ->default(false)
+                    ->dehydrated(false),
 
                 TextInput::make('description')
                     ->label(__('dishes.description'))
