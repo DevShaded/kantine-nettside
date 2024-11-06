@@ -53,4 +53,3 @@ Gå til [localhost:3000](http://localhost:3000) for å se kantine nettsiden.
 
 ## Lisens
 Dette prosjektet er lisensiert under MIT lisensen. Se [LICENSE](LICENSE) for mer informasjon.
-```
