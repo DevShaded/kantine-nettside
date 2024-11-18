@@ -33,7 +33,7 @@ const { status, data: menu } = await useFetch(`http://server.test/api/menus/${da
     <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:pt-32">
       <div class="md:flex md:items-center md:justify-between">
         <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-200">Dagens Meny ({{ dayName.charAt(0).toUpperCase() + dayName.slice(1) }})</h2>
-        <NuxtLink to="/meny" class="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
+        <NuxtLink to="/meny" class="hidden text-sm font-medium text-indigo-400 hover:text-indigo-500 md:block">
           Se hele menyen
           <span aria-hidden="true"> &rarr;</span>
         </NuxtLink>
